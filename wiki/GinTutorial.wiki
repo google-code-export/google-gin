@@ -1,6 +1,4 @@
 #labels Featured
-#GIN Tutorial
-
 = Using GIN to create a GWT widget =
 
 == Step 1. Defining the injector ==
