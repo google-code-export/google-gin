@@ -45,15 +45,17 @@ Note that if GIN can't find a binding for a class, it falls back to calling {{{G
 
 Although the module class looks exactly like a regular Guice module, the way that it is used to create the injector is very different from regular Guice. You'll need to create a new project directory called "rebind" that sits next to "client", "public", "server" and the other standard GWT folders. The rebind directory contains all of the module sources:
 
- * MyWidget/
-   * client/
-     * MyWidget.java
-     * MyWidgetInjector.java
-     * MyWidgetMainPanel.java
-   * rebind/
-     * MyWidgetClientModule.java
-   * public/
-   * server/
+{{{
+MyWidgetProject/
+    client/
+        MyWidget.java
+        MyWidgetInjector.java
+        MyWidgetMainPanel.java
+    rebind/
+        MyWidgetClientModule.java
+    public/
+    server/
+}}}
 
 The rebind classes should be placed in their own java library.
 
