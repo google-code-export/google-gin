@@ -24,7 +24,7 @@ public interface MyWidgetInjector extends Injector {
 
    Note that you only need to create injector methods for classes that you would directly access in your top-level initialization code, such as the UI classes to install in your `RootPanel`. You don't need to create injector methods for lower-level classes that will be automatically injected. So for example, if Class `A` uses class `B` which uses class `C`, you only need to create an injector method for `A`, as the other classes `B` and `C` will automatically be injected into `A`.
 
-   In other words, injector methods provide a bridget between the Guice and non-Guice world.
+   In other words, injector methods provide a bridge between the Guice and non-Guice world.
 
 == Step 2. Declaration the class bindings ==
 
