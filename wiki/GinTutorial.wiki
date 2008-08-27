@@ -1,7 +1,7 @@
 #summary Using GIN to create a GWT widget
 #labels Featured
 
-This tutorial will show how a simple GWT widget can be constructed with GIN.
+This tutorial will show how a simple GWT widget can be constructed with GIN. You should be already familiar with [http://code.google.com/p/google-guice/ Guice] - if not, then please read the [http://code.google.com/p/google-guice/wiki/UserGuide Guice User Guide] for an introductory overview of Guice concepts.
 
 == Step 1. Defining the injector ==
 
