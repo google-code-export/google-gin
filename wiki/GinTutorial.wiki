@@ -61,7 +61,7 @@ The rebind classes should be placed in their own java library.
 
 (TODO: Add build file example)
 
-The rebind library is not added as a dependency of the widget's gwt_module - instead, it is added as a depedency of the gwt application.
+The rebind library is not added as a dependency of the widget's gwt module - instead, it is added as a depedency of the gwt application.
 
 (TODO: Add build file example)
 
