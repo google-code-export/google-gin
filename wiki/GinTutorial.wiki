@@ -1,5 +1,5 @@
+#summary Using GIN to create a GWT widget
 #labels Featured
-# Using GIN to create a GWT widget
 
 = Using GIN to create a GWT widget =
 
