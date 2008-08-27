@@ -1,6 +1,8 @@
 #summary Using GIN to create a GWT widget
 #labels Featured
 
+This tutorial will show how a simple GWT widget can be constructed with GIN.
+
 == Step 1. Defining the injector ==
 
 The role of the `Injector` class in GIN is the same as in regular Guice, however the API is a little different. In regular Guice, you would use:
