@@ -65,7 +65,7 @@ The rebind library is not added as a dependency of the widget's gwt module - ins
 
 (TODO: Add build file example)
 
-Finally, you'll need to add the name of the module to a {{{@Module}}} attribute which is placed on the injector (as seen in the example above.)
+Finally, you'll need to add the resource path of the rebind library to a {{{@Module}}} attribute which is placed on the injector (as seen in the example above.)
 
 == Step 4. Creating the Injector ==
 
