@@ -34,7 +34,7 @@ The next step is to bind the various classes and providers using a Guice module.
 public class MyWidgetClientModule extends AbstractModule {
   protected void configure() {
     bind(MyWidgetMainPanel.class).in(Singleton.class);
-    bind(MyRemoveService.class).toProvider(MyRemoteServiceProvider.class);
+    bind(MyRemoteService.class).toProvider(MyRemoteServiceProvider.class);
   }
 }
 }}}
