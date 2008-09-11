@@ -1,0 +1,11 @@
+#summary GIN frequently asked questions
+
+
+= GIN frequently asked questions =
+
+== What bindings don't work? ==
+
+Because your Module class is actually executed at _compile_ time, it can't refer to any GWT client-side code. And thus, you also can't carry along any object instances from the Module in to the eventual client code. So, these don't work:
+
+  * `.toInstance(obj)`, because `obj` exists at compile-time, not run-time
+  * `.toProvider(new Provider<T>() { ... }`, for the same reason but now because the provider does not exist at run-time. You can fix this case by making the provider a public concrete class in `.client`.
