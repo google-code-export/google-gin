@@ -1,4 +1,5 @@
 #summary GIN frequently asked questions
+#labels Featured
 
 
 = GIN frequently asked questions =
