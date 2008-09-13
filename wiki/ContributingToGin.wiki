@@ -1,0 +1,14 @@
+#summary Information on how you can contribute to GIN
+
+= Contributing to GIN =
+
+Thanks for your interest in contributing to GIN! In general, the process is similar to [http://code.google.com/webtoolkit/makinggwtbetter.html#contributingcode GWT's extremely well-documented process].
+
+== Code style ==
+
+GIN uses the [http://code.google.com/webtoolkit/makinggwtbetter.html#codestyle same code style rules as GWT], except that lines are allowed to be 100 characters long.
+
+== Submitting a patch ==
+  # Create an issue in the GIN issue tracker, if needed.
+  # Attach a patch to the issue.
+  # Using http://codereview.appspot.com, submit your patch for review to bstoler@google.com, cc: google-gin@googlegroups.com
