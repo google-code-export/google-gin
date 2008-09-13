@@ -1,4 +1,5 @@
 #summary Information on how you can contribute to GIN
+#labels Featured
 
 = Contributing to GIN =
 
