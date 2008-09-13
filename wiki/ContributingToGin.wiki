@@ -11,5 +11,6 @@ GIN uses the [http://code.google.com/webtoolkit/makinggwtbetter.html#codestyle s
 
 == Submitting a patch ==
   # Create an issue in the GIN issue tracker, if needed.
+  # Submit a [http://code.google.com/webtoolkit/makinggwtbetter.html#clas contributor license agreement], if you have not done so before. (You can do this electronically.)
   # Attach a patch to the issue.
   # Using http://codereview.appspot.com, submit your patch for review to bstoler@google.com, cc: google-gin@googlegroups.com
