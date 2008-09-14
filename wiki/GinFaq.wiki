@@ -4,6 +4,14 @@
 
 = GIN frequently asked questions =
 
+== How does GIN work? ==
+
+GIN uses [http://code.google.com/p/google-guice Guice] at compile-time via a [http://google-web-toolkit.googlecode.com/svn/javadoc/1.5/com/google/gwt/core/ext/Generator.html GWT Generator]. The generator creates an implementation of your `Ginjector` interfaces.
+
+== Does GIN have runtime overhead? ==
+
+No, it shouldn't -- it essentially generates the exact code you'd use if you did the dependency injection and object construction by hand. You can look for yourself by compiling your GWT application with `PRETTY` mode and looking at the JavaScript.
+
 == What bindings don't work? ==
 
 Because your Module class is actually executed at _compile_ time, it can't refer to any GWT client-side code. And thus, you also can't carry along any object instances from the Module in to the eventual client code. So, these don't work:
