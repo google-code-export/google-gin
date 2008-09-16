@@ -5,7 +5,7 @@ This tutorial will show how a simple GWT widget can be constructed with GIN. You
 
 == Step 1. Defining the injector ==
 
-The role of the `Injector` class in GIN is the same as in regular Guice, however the API is a little different. In regular Guice, you would use:
+The role of the `Ginjector` class in GIN is the same as in regular Guice, however the API is a little different. In regular Guice, you would use:
 
 {{{
 MyWidgetMainPanel mainPanel = injector.getInstance(MyWidgetMainPanel.class);
@@ -15,7 +15,7 @@ However, that won't work in GWT, since there is no actual class available. Fortu
 
 {{{
 @Modules("com.example.mywidget.rebind.MyWidgetClientModule")
-public interface MyWidgetInjector extends Injector {
+public interface MyWidgetGinjector extends Ginjector {
   MyWidgetMainPanel getMainPanel();
 }
 }}}
@@ -49,7 +49,7 @@ Although the module class looks exactly like a regular Guice module, the way tha
 MyWidgetProject/
     client/
         MyWidget.java
-        MyWidgetInjector.java
+        MyWidgetGinjector.java
         MyWidgetMainPanel.java
     rebind/
         MyWidgetClientModule.java
@@ -67,13 +67,13 @@ The rebind library is not added as a dependency of the widget's gwt module - ins
 
 Finally, you'll need to add the resource path of the rebind library to a {{{@Module}}} attribute which is placed on the injector (as seen in the example above.)
 
-== Step 4. Creating the Injector ==
+== Step 4. Creating the Ginjector ==
 
 To create the injector instance, use the standard {{{GWT.create()}}} call. This can be done during static initialization:
 
 {{{
 public class MyWidget implements EntryPoint {
-  private final MyWidgetInjector injector = GWT.create(MyWidgetInjector.class);
+  private final MyWidgetGinjector injector = GWT.create(MyWidgetGinjector.class);
 
   public void onModuleLoad() {
     MyWidgetMainPanel mainPanel = injector.getMainPanel();
