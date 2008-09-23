@@ -3,35 +3,52 @@
 
 This tutorial will show how a simple GWT widget can be constructed with GIN. You should be already familiar with [http://code.google.com/p/google-guice/ Guice] - if not, then please read the [http://code.google.com/p/google-guice/wiki/UserGuide Guice User Guide] for an introductory overview of Guice concepts.
 
-== Step 1. Defining the injector ==
+== Introduction ==
 
-The role of the `Ginjector` class in GIN is the same as in regular Guice, however the API is a little different. In regular Guice, you would use:
+In regular Guice, you would use:
 
 {{{
+// Does NOT work in GWT code!
 MyWidgetMainPanel mainPanel = injector.getInstance(MyWidgetMainPanel.class);
 }}}
 
-However, that won't work in GWT, since there is no actual class available. Fortunately in GWT there is a different idiom for which accomplishes the same purpose, which is to declare an interface with methods that return the desired types:
+However, as the comment points out that won't work in GWT:
+ * There is no actual class available in the resulting !JavaScript.
+ * Guice makes heavy use of reflection, most of which GWT does not emulate.
+
+Fortunately in GWT there is a different idiom for which accomplishes the same purpose.
+
+== Step 1. Inheriting the GIN module ==
+{{{
+<module>
+  ...
+  <inherits name="com.google.gwt.inject.Inject"/>
+  ...
+</module>
+}}}
+
+== Step 2. Defining the Ginjector ==
+Declare an interface with methods that return the desired types:
 
 {{{
-@Modules("com.example.mywidget.rebind.MyWidgetClientModule")
+@GinModules(MyWidgetClientModule.class)
 public interface MyWidgetGinjector extends Ginjector {
   MyWidgetMainPanel getMainPanel();
 }
 }}}
 
-   Experienced GWT users will notice the similarity to the way GWT image bundles and messages are done: You simply create a method for each object type you want to create. The name of the method is arbitrary and can be anything you like.
+Experienced GWT users will notice the similarity to the way GWT image bundles and messages are done: You simply create a method for each object type you want to create, and the an implementation of the interface gets generated for you *at compile time*.
 
-   Note that you only need to create injector methods for classes that you would directly access in your top-level initialization code, such as the UI classes to install in your `RootPanel`. You don't need to create injector methods for lower-level classes that will be automatically injected. So for example, if Class `A` uses class `B` which uses class `C`, you only need to create an injector method for `A`, as the other classes `B` and `C` will automatically be injected into `A`.
+Note that you only need to create injector methods for classes that you would directly access in your top-level initialization code, such as the UI classes to install in your `RootPanel`. You don't need to create injector methods for lower-level classes that will be automatically injected. So for example, if Class `A` uses class `B` which uses class `C`, you only need to create an injector method for `A`, as the other classes `B` and `C` will automatically be injected into `A`.
 
-   In other words, injector methods provide a bridge between the Guice and non-Guice world.
+In other words, injector methods provide a bridge between the Guice and non-Guice world.
 
-== Step 2. Declaration the class bindings ==
+== Step 3. Declaration the class bindings ==
 
-The next step is to bind the various classes and providers using a Guice module. The module class looks almost exactly like it would in regular Guice (in fact the API classes are the same.) Here's an example module:
+The next step is to bind the various classes and providers using a Guice module. The module class looks almost exactly like it would in regular Guice (We use the `GinModule` and `AbstractGinModule` instead of `Module` and `AbstractModule`.) Here's an example module:
 
 {{{
-public class MyWidgetClientModule extends AbstractModule {
+public class MyWidgetClientModule extends AbstractGinModule {
   protected void configure() {
     bind(MyWidgetMainPanel.class).in(Singleton.class);
     bind(MyRemoteService.class).toProvider(MyRemoteServiceProvider.class);
@@ -41,9 +58,7 @@ public class MyWidgetClientModule extends AbstractModule {
 
 Note that if GIN can't find a binding for a class, it falls back to calling {{{GWT.create()}}} on that class. What this means that image bundles and translated messages will just magically work.
 
-== Step 3. Associating the module with the injector ==
-
-Although the module class looks exactly like a regular Guice module, the way that it is used to create the injector is very different from regular Guice. You'll need to create a new project directory called "rebind" that sits next to "client", "public", "server" and the other standard GWT folders. The rebind directory contains all of the module sources:
+== Step 4. Associating the module with the injector ==
 
 {{{
 MyWidgetProject/
@@ -51,23 +66,14 @@ MyWidgetProject/
         MyWidget.java
         MyWidgetGinjector.java
         MyWidgetMainPanel.java
-    rebind/
         MyWidgetClientModule.java
     public/
     server/
 }}}
 
-The rebind classes should be placed in their own java library.
-
 (TODO: Add build file example)
 
-The rebind library is not added as a dependency of the widget's gwt module - instead, it is added as a depedency of the gwt application.
-
-(TODO: Add build file example)
-
-Finally, you'll need to add the resource path of the rebind library to a {{{@Module}}} attribute which is placed on the injector (as seen in the example above.)
-
-== Step 4. Creating the Ginjector ==
+== Step 5. Creating the Ginjector ==
 
 To create the injector instance, use the standard {{{GWT.create()}}} call. This can be done during static initialization:
 
@@ -79,5 +85,6 @@ public class MyWidget implements EntryPoint {
     MyWidgetMainPanel mainPanel = injector.getMainPanel();
     RootPanel.get().add(mainPanel);
   }
+
 }
 }}}
