@@ -42,7 +42,7 @@ Note that you only need to create injector methods for classes that you would di
 
 In other words, injector methods provide a bridge between the Guice and non-Guice world.
 
-== Step 3. Declaration the class bindings ==
+== Step 3. Declare bindings ==
 
 The next step is to bind the various classes and providers using a Guice module. The module class looks almost exactly like it would in regular Guice (We use the `GinModule` and `AbstractGinModule` instead of `Module` and `AbstractModule`.) Here's an example module:
 
