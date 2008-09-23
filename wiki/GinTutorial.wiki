@@ -31,7 +31,6 @@ Fortunately in GWT there is a different idiom for which accomplishes the same pu
 Declare an interface with methods that return the desired types:
 
 {{{
-@GinModules(MyWidgetClientModule.class)
 public interface MyWidgetGinjector extends Ginjector {
   MyWidgetMainPanel getMainPanel();
 }
@@ -60,6 +59,16 @@ Note that if GIN can't find a binding for a class, it falls back to calling {{{G
 
 == Step 4. Associating the module with the injector ==
 
+Add the `GinModules` annotation to your Ginjector, specifying the module(s) needed to configure the application.
+
+{{{
+@GinModules(MyWidgetClientModule.class)
+public interface MyWidgetGinjector extends Ginjector {
+  MyWidgetMainPanel getMainPanel();
+}
+}}}
+
+Current project layout:
 {{{
 MyWidgetProject/
     client/
