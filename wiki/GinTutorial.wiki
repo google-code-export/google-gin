@@ -57,6 +57,12 @@ public class MyWidgetClientModule extends AbstractGinModule {
 
 Note that if GIN can't find a binding for a class, it falls back to calling {{{GWT.create()}}} on that class. What this means that image bundles and translated messages will just magically work.
 
+We emulate most of Guice's types but not modules, because:
+ * We need to be able to develop GIN at our own pace.
+ * We will probably never support `toInstance(...)` and the like because we do our work with modules at compile time, not runtime. 
+
+For compatibility with regular Guice we provide a `GinModuleAdapter` class, which makes your `GinModule` available as a `Module`.
+
 == Step 4. Associating the module with the injector ==
 
 Add the `GinModules` annotation to your Ginjector, specifying the module(s) needed to configure the application.
