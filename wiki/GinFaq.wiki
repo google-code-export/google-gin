@@ -14,7 +14,30 @@ No, it shouldn't -- it essentially generates the exact code you'd use if you did
 
 == What bindings don't work? ==
 
-Because your Module class is actually executed at _compile_ time, it can't refer to any GWT client-side code. And thus, you also can't carry along any object instances from the Module in to the eventual client code. So, these don't work:
+Because your Module class is actually executed at _compile_ time, you have to make sure its `configure(...)` method does not execute any GWT client-side code directly. And thus, you also can't carry along any object instances from the Module in to the eventual client code. So, these don't work:
 
   * `.toInstance(obj)`, because `obj` exists at compile-time, not run-time
   * `.toProvider(new Provider<T>() { ... }`, for the same reason but now because the provider does not exist at run-time. You can fix this case by making the provider a public concrete class in `.client`.
+
+While this does:
+{{{
+class MyModule extends AbstractGinModule {
+  @Override
+  protected void configure() {
+    bind(Something.class).to(SomethingProvider.class);
+  }
+
+  static class SomethingProvider implements Provider<Something> {
+    public Something get() {
+      return new Something(getDataFromJavaScript());
+    }
+
+    // Using JSNI in a provider
+    private native String getDataFromJavaScript() /*-{
+      ...
+    }-*/;
+  }
+}
+}}}
+
+Note that you will not be able to reuse your `GinModule` on the server side (using `GinModuleAdapter`) if your bindings directly or indirectly make use of GWT specific infrastructure like `GWT.create(...)`, widgets or JSNI.
