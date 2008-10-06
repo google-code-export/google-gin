@@ -7,7 +7,7 @@ We have alternative types for:
  * `Module`, `AbstractModule`
  * `Injector`
 
-For `Module` and `AbtractModule`, use `GinModule` and `AbstractGinModule`. They work much like their counterparts, but lack some of the features of the Guice types. Note that there is a 100% one-way conversion from GWT to Guice using `GinModuleAdapter`. So consider putting shared code in a `GinModule`. Other than that, you could also copy paste bindings from existing modules (usually they'll work), but of course copy-pasting should be discouraged.
+For `Module` and `AbtractModule`, use `GinModule` and `AbstractGinModule`. They work much like their counterparts, but lack some of the features. Note that there is a 100% one-way conversion from GWT to Guice using `GinModuleAdapter`, so consider putting shared code in a `GinModule`. Other than that, you could also copy paste bindings from existing modules (usually they'll work), but of course copy-pasting should be discouraged.
 
 For `Injector`, use the `Ginjector` conbined with the `@GinModules` annotation. See the [GinTutorial] to learn how you can get started.
 
