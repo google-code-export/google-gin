@@ -18,34 +18,36 @@ For everything else, use the Guice types. Note that we don not support everythin
 == Features ==
 Here we compare the current GIN trunk with Guice 1.0 and 2.0 (which has not been released yet). The feature list is not complete, but should give you a rough idea about what works and what doesn't.
 
-*X* = Implemented
+*A* = Available
 
-*-* = Not Implemented
+*N/A* = Not Available (will probably never happen)
+
+*P* = Planned (possible)
 
 === Configuration ===
 || *Feature*                     || *Guice 1.0* || *Guice 2.0* || *GIN*           ||
-|| Modules                       || X           || X           || X (`GinModule`) ||  
-|| Provider bindings             || X           || X           || X               || 
-|| Provider method bindings      || -           || X           || -               || 
-|| toInstance bindings           || X           || X           || -               || 
-|| Constant bindings             || X           || X           || X               || 
-|| Binder.install                || X           || X           || X               ||  
-|| Binder.requestInjection       || -           || X           || -               || 
-|| Binder.requestStaticInjection || X           || X           || -               || 
-|| Binder.getProvider()          || -           || X           || -               || 
-|| (Custom) binding annotations  || X           || X           || X               ||  
-|| `@Named`                      || X           || X           || X               ||  
-|| Scopes                        || X           || X           || X               || 
-|| Custom Scopes                 || X           || X           || -               || 
-|| `@Singleton class Blah{}`     || X           || X           || -               || 
-|| `@ImplementedBy`              || X           || X           || -               || 
-|| `@ProvidedBy`                 || X           || X           || -               || 
-|| `TypeLiteral`                 || X           || X           || X               || 
+|| Modules                       || A           || A           || A (`GinModule`) ||  
+|| Provider bindings             || A           || A           || A               || 
+|| Provider method bindings      || N/A         || A           || P               || 
+|| toInstance bindings           || A           || A           || N/A             || 
+|| Constant bindings             || A           || A           || A               || 
+|| Binder.install                || A           || A           || A               ||  
+|| Binder.requestInjection       || N/A         || A           || N/A             || 
+|| Binder.requestStaticInjection || A           || A           || P               || 
+|| Binder.getProvider()          || N/A         || A           || P               || 
+|| (Custom) binding annotations  || A           || A           || A               ||  
+|| `@Named`                      || A           || A           || A               ||  
+|| Scopes                        || A           || A           || A               || 
+|| Custom Scopes                 || A           || A           || N/A             || 
+|| `@Singleton class Blah{}`     || A           || A           || P               || 
+|| `@ImplementedBy`              || A           || A           || P               || 
+|| `@ProvidedBy`                 || A           || A           || P               || 
+|| `TypeLiteral`                 || A           || A           || A               || 
 
 === Runtime ===
 || *Feature*                     || *Guice 1.0* || *Guice 2.0* || *GIN* ||
-|| Constructor injection         || X           || X           || X     || 
-|| Field injection               || X           || X           || -     || 
-|| Method injection              || X           || X           || -     ||
-|| Method interception (AOP)     || X           || X           || -     || 
-|| Injector.injectMembers        || X           || X           || -     || 
+|| Constructor injection         || A           || A           || A     || 
+|| Field injection               || A           || A           || P     || 
+|| Method injection              || A           || A           || P     ||
+|| Method interception (AOP)     || A           || A           || P     || 
+|| Injector.injectMembers        || A           || A           || N/A   || 
