@@ -23,29 +23,29 @@ Here we compare the current GIN trunk with Guice 1.0 and 2.0 (which has not been
 *-* = Not Implemented
 
 === Configuration ===
-|| *Feature*                     || *Guice 1.0* || *Guice 2.0* || *GIN* ||
-|| Modules                       || X           || X || X (`GinModule`) ||  
-|| Provider bindings             || X           || X || X || 
-|| Provider method bindings      || -           || X || - || 
-|| toInstance bindings           || X           || X || - || 
-|| Constant bindings             || X           || X || X || 
-|| Binder.install                || X           || X || X ||  
-|| Binder.requestInjection       || -           || X || - || 
-|| Binder.requestStaticInjection || X           || X || - || 
-|| Binder.getProvider()          || -           || X || - || 
-|| (Custom) binding annotations  || X           || X || X ||  
-|| `@Named`                      || X           || X || X ||  
-|| Scopes                        || X           || X || X || 
-|| Custom Scopes                 || X           || X || - || 
-|| `@Singleton class Blah{}`     || X           || X || - || 
-|| `@ImplementedBy`              || X           || X || - || 
-|| `@ProvidedBy`                 || X           || X || - || 
-|| `TypeLiteral`                 || X           || X || X || 
+|| *Feature*                     || *Guice 1.0* || *Guice 2.0* || *GIN*           ||
+|| Modules                       || X           || X           || X (`GinModule`) ||  
+|| Provider bindings             || X           || X           || X               || 
+|| Provider method bindings      || -           || X           || -               || 
+|| toInstance bindings           || X           || X           || -               || 
+|| Constant bindings             || X           || X           || X               || 
+|| Binder.install                || X           || X           || X               ||  
+|| Binder.requestInjection       || -           || X           || -               || 
+|| Binder.requestStaticInjection || X           || X           || -               || 
+|| Binder.getProvider()          || -           || X           || -               || 
+|| (Custom) binding annotations  || X           || X           || X               ||  
+|| `@Named`                      || X           || X           || X               ||  
+|| Scopes                        || X           || X           || X               || 
+|| Custom Scopes                 || X           || X           || -               || 
+|| `@Singleton class Blah{}`     || X           || X           || -               || 
+|| `@ImplementedBy`              || X           || X           || -               || 
+|| `@ProvidedBy`                 || X           || X           || -               || 
+|| `TypeLiteral`                 || X           || X           || X               || 
 
 === Runtime ===
 || *Feature*                     || *Guice 1.0* || *Guice 2.0* || *GIN* ||
-|| Constructor injection         || X           || X || X || 
-|| Field injection               || X           || X || - || 
-|| Method injection              || X           || X || - ||
-|| Method interception (AOP)     || X           || X || - || 
-|| Injector.injectMembers        || X           || X || - || 
+|| Constructor injection         || X           || X           || X     || 
+|| Field injection               || X           || X           || -     || 
+|| Method injection              || X           || X           || -     ||
+|| Method interception (AOP)     || X           || X           || -     || 
+|| Injector.injectMembers        || X           || X           || -     || 
