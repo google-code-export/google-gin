@@ -41,3 +41,5 @@ class MyModule extends AbstractGinModule {
 }}}
 
 Note that you will not be able to reuse your `GinModule` on the server side (using `GinModuleAdapter`) if your bindings directly or indirectly make use of GWT specific infrastructure like `GWT.create(...)`, widgets or JSNI.
+
+See the GuiceCompatibility page for a feature comparison with Guice.
