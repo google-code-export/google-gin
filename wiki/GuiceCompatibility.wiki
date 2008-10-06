@@ -1,0 +1,51 @@
+#summary It looks like Guice, it walks like Guice, so it must be Guice?
+
+= Guice Compatibility =
+
+== API ==
+We have alternative types for:
+ * `Module`, `AbstractModule`
+ * `Injector`
+
+For `Module` and `AbtractModule`, use `GinModule` and `AbstractGinModule`. They work much like their counterparts, but lack some of the features of the Guice types. Note that there is a 100% one-way conversion from GWT to Guice using `GinModuleAdapter`. So consider putting shared code in a `GinModule`. Other than that, you could also copy paste bindings from existing modules (usually they'll work), but of course copy-pasting should be discouraged.
+
+For `Injector`, use the `Ginjector` conbined with the `@GinModules` annotation. See the [GinTutorial] to learn how you can get started.
+
+For everything else, use the Guice types. Note that we don not support everything Guice does (and we never will), so keep in mind when you are developing with GIN. See the feature comparison below for more information.
+
+
+
+== Features ==
+Here we compare the current GIN trunk with Guice 1.0 and 2.0 (which has not been released yet). The feature list is not complete, but should give you a rough idea about what works and what doesn't.
+
+*X* = Implemented
+
+*-* = Not Implemented
+
+=== Configuration ===
+|| *Feature*                     || *Guice 1.0* || *Guice 2.0* || *GIN* ||
+|| Modules                       || X           || X || X (`GinModule`) ||  
+|| Provider bindings             || X           || X || X || 
+|| Provider method bindings      || -           || X || - || 
+|| toInstance bindings           || X           || X || - || 
+|| Constant bindings             || X           || X || X || 
+|| Binder.install                || X           || X || X ||  
+|| Binder.requestInjection       || -           || X || - || 
+|| Binder.requestStaticInjection || X           || X || - || 
+|| Binder.getProvider()          || -           || X || - || 
+|| (Custom) binding annotations  || X           || X || X ||  
+|| `@Named`                      || X           || X || X ||  
+|| Scopes                        || X           || X || X || 
+|| Custom Scopes                 || X           || X || - || 
+|| `@Singleton class Blah{}`     || X           || X || - || 
+|| `@ImplementedBy`              || X           || X || - || 
+|| `@ProvidedBy`                 || X           || X || - || 
+|| `TypeLiteral`                 || X           || X || X || 
+
+=== Runtime ===
+|| *Feature*                     || *Guice 1.0* || *Guice 2.0* || *GIN* ||
+|| Constructor injection         || X           || X || X || 
+|| Field injection               || X           || X || - || 
+|| Method injection              || X           || X || - ||
+|| Method interception (AOP)     || X           || X || - || 
+|| Injector.injectMembers        || X           || X || - || 
