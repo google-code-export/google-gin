@@ -43,6 +43,7 @@ Here we compare the current GIN trunk with Guice 1.0 and 2.0 (which has not been
 || `@ImplementedBy`              || A           || A           || P               || 
 || `@ProvidedBy`                 || A           || A           || P               || 
 || `TypeLiteral`                 || A           || A           || A               || 
+|| Circular dependencies         || A           || A           || P               || 
 
 === Runtime ===
 || *Feature*                     || *Guice 1.0* || *Guice 2.0* || *GIN* ||
