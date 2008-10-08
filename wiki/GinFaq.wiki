@@ -24,7 +24,7 @@ While this does:
 class MyModule extends AbstractGinModule {
   @Override
   protected void configure() {
-    bind(Something.class).to(SomethingProvider.class);
+    bind(Something.class).toProvider(SomethingProvider.class);
   }
 
   static class SomethingProvider implements Provider<Something> {
