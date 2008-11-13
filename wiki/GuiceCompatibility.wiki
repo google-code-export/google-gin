@@ -35,10 +35,11 @@ Here we compare the current GIN trunk with Guice 1.0 and 2.0 (which has not been
 || Binder.requestInjection       || N/A         || A           || N/A             || 
 || Binder.requestStaticInjection || A           || A           || P               || 
 || Binder.getProvider()          || N/A         || A           || P               || 
+|| Binder.requireBinding()       || N/A         || A           || P               || 
 || (Custom) binding annotations  || A           || A           || A               ||  
 || `@Named`                      || A           || A           || A               ||  
 || Scopes                        || A           || A           || A               || 
-|| Custom Scopes                 || A           || A           || N/A             || 
+|| Custom Scopes                 || A           || A           || P (?)           || 
 || `@Singleton class Blah{}`     || A           || A           || P               || 
 || `@ImplementedBy`              || A           || A           || P               || 
 || `@ProvidedBy`                 || A           || A           || P               || 
@@ -49,6 +50,6 @@ Here we compare the current GIN trunk with Guice 1.0 and 2.0 (which has not been
 || *Feature*                     || *Guice 1.0* || *Guice 2.0* || *GIN* ||
 || Constructor injection         || A           || A           || A     || 
 || Field injection               || A           || A           || P     || 
-|| Method injection              || A           || A           || P     ||
-|| Method interception (AOP)     || A           || A           || P     || 
-|| Injector.injectMembers        || A           || A           || N/A   || 
+|| Method injection              || A           || A           || A     ||
+|| Method interception (AOP)     || A           || A           || P (?) || 
+|| Injector.injectMembers        || A           || A           || A     || 
