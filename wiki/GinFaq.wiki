@@ -50,4 +50,4 @@ There are two options:
   * Write a custom `Provider<MyRemoteServiceAsync>`.
   * Use GIN's automatic bindings for remote services
 
-The automatic binding works by replacing an injection of `MyRemoteServiceAsync` with {{{GWT.create(MyRemoteService.class}}}. When using this mechanism, to set the URI used for the remote service, put `@RemoteServiceRelativePath` on interface `MyRemoteService`.
+The automatic binding works by replacing an injection of `MyRemoteServiceAsync` with {{{GWT.create(MyRemoteService.class)}}}. When using this mechanism, to set the URI used for the remote service, put `@RemoteServiceRelativePath` on interface `MyRemoteService`.
