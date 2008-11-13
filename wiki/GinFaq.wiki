@@ -43,3 +43,11 @@ class MyModule extends AbstractGinModule {
 Note that you will not be able to reuse your `GinModule` on the server side (using `GinModuleAdapter`) if your bindings directly or indirectly make use of GWT specific infrastructure like `GWT.create(...)`, widgets or JSNI.
 
 See the GuiceCompatibility page for a feature comparison with Guice.
+
+== How do I use GIN with GWT RPC? ==
+
+There are two options:
+  * Write a custom `Provider<MyRemoteServiceAsync>`.
+  * Use GIN's automatic bindings for remote services
+
+The automatic binding works by replacing an injection of `MyRemoteServiceAsync` with {{{GWT.create(MyRemoteService.class}}}. When using this mechanism, to set the URI used for the remote service, put `@RemoteServiceRelativePath` on interface `MyRemoteService`.
