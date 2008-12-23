@@ -29,7 +29,7 @@ Here we compare the current GIN trunk with Guice 1.0 and 2.0 (which has not been
 || Modules                       || A           || A           || A (`GinModule`) ||  
 || Provider bindings             || A           || A           || A               || 
 || Provider method bindings      || N/A         || A           || P               || 
-|| toInstance bindings           || A           || A           || N/A             || 
+|| toInstance bindings           || A           || A           || P (?)           || 
 || Constant bindings             || A           || A           || A               || 
 || Binder.install                || A           || A           || A               ||  
 || Binder.requestInjection       || N/A         || A           || N/A             || 
@@ -49,7 +49,7 @@ Here we compare the current GIN trunk with Guice 1.0 and 2.0 (which has not been
 === Runtime ===
 || *Feature*                     || *Guice 1.0* || *Guice 2.0* || *GIN* ||
 || Constructor injection         || A           || A           || A     || 
-|| Field injection               || A           || A           || P     || 
+|| Field injection               || A           || A           || A     || 
 || Method injection              || A           || A           || A     ||
 || Method interception (AOP)     || A           || A           || P (?) || 
 || Injector.injectMembers        || A           || A           || A     || 
