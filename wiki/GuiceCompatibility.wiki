@@ -15,7 +15,7 @@ For everything else, use the Guice types. Note that we don not support everythin
 
 
 == Features ==
-Here we compare the current GIN trunk with Guice 1.0 and 2.0 (which has not been released yet). The feature list is not complete, but should give you a rough idea about what works and what doesn't.
+Here we compare the current GIN trunk with Guice 1.0 and 2.0. The feature list is not complete, but should give you a rough idea about what works and what doesn't.
 
 *A* = Available
 
