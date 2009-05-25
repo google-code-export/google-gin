@@ -45,6 +45,7 @@ Here we compare the current GIN trunk with Guice 1.0 and 2.0 (which has not been
 || `TypeLiteral`                 || A           || A           || A               || 
 || Circular dependencies         || A           || A           || P               || 
 || Private modules               || N/A         || A           || P               || 
+|| `@Optional` injection         || N/A         || A           || A               || 
 
 === Runtime ===
 || *Feature*                     || *Guice 1.0* || *Guice 2.0* || *GIN* ||
