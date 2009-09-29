@@ -32,7 +32,7 @@ Here we compare the current GIN trunk with Guice 1.0 and 2.0. The feature list i
 || Constant bindings             || A           || A           || A               || 
 || Binder.install                || A           || A           || A               ||  
 || Binder.requestInjection       || N/A         || A           || N/A             || 
-|| Binder.requestStaticInjection || A           || A           || P               || 
+|| Binder.requestStaticInjection || A           || A           || A               || 
 || Binder.getProvider()          || N/A         || A           || P               || 
 || Binder.requireBinding()       || N/A         || A           || P               || 
 || (Custom) binding annotations  || A           || A           || A               ||  
@@ -40,8 +40,8 @@ Here we compare the current GIN trunk with Guice 1.0 and 2.0. The feature list i
 || Scopes                        || A           || A           || A               || 
 || Custom Scopes                 || A           || A           || P (?)           || 
 || `@Singleton class Blah{}`     || A           || A           || A               || 
-|| `@ImplementedBy`              || A           || A           || P               || 
-|| `@ProvidedBy`                 || A           || A           || P               || 
+|| `@ImplementedBy`              || A           || A           || A               || 
+|| `@ProvidedBy`                 || A           || A           || A               || 
 || `TypeLiteral`                 || A           || A           || A               || 
 || Circular dependencies         || A           || A           || P               || 
 || Private modules               || N/A         || A           || P               || 
