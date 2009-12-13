@@ -15,7 +15,7 @@ This process applies for committers and non-committers alike.
   # Create an issue in the GIN issue tracker, if needed. For simple internal changes, this step can be omitted.
   # Submit a [http://code.google.com/webtoolkit/makinggwtbetter.html#clas contributor license agreement], if you have not done so before. (You can do this electronically.)
   # Attach a patch to the issue.
-  # Using http://codereview.appspot.com, submit your patch for review to aragos@gmail.com, cc: google-gin@googlegroups.com
+  # Using http://codereview.appspot.com, submit your patch for review to _aragos@gmail.com_, cc: _google-gin@googlegroups.com_ (you need to be a member of the google-gin group or you might get an error)
   # Once the review is complete (ending in an LGTM):
     * If you are a committer, submit.
     * If you are not a committer, ask a committer to submit your updated patch.
