@@ -52,8 +52,8 @@ There are two options:
 
 The automatic binding works by replacing an injection of `MyRemoteServiceAsync` with {{{GWT.create(MyRemoteService.class)}}}. When using this mechanism, to set the URI used for the remote service, put `@RemoteServiceRelativePath` on interface `MyRemoteService`.
 
-== Why do I get a "[ERROR] Deferred binding result type 'A' should not be abstract" error during compile?
+== Why do I get a `[ERROR] Deferred binding result type 'A' should not be abstract` error during compile? ==
 
-This can happen when Gin tries to instantiate an interface by calling GWT.create on it - a method Gin uses to allow easy injection of interfaces configured with GWT's deferred binding mechanism. Unfortunately, if no deferred binding or replacement is registered for the interface, you will get the above error. To fix the problem, bind the offending interface to an implementation in your GinModule!
+This can happen when Gin tries to instantiate an interface by calling GWT.create on it - a method Gin uses to allow easy injection of interfaces configured with GWT's deferred binding mechanism. Unfortunately, if no deferred binding or replacement is registered for the interface, you will get the above error. To fix the problem, bind the offending interface to an injectable implementation in your GinModule.
 
-_Note:_ This can also happen when using `@Optional` injection - if the injected parameter is of an interface type and not bound, Gin will *not* use optional injection but call GWT.create on the interface, potentially causing this error.
+_Note:_ This can also happen when using `@Optional` injection - if the injected parameter is of an interface type and the interface is not bound, Gin will *not* use optional injection but call GWT.create on the interface, potentially causing this error.
