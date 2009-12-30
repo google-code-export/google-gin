@@ -1,9 +1,11 @@
 #summary Using GIN to create a GWT widget
 #labels Featured
 
-This tutorial will show how a simple GWT widget can be constructed with GIN. You should be already familiar with [http://code.google.com/p/google-guice/ Guice] - if not, then please read the [http://code.google.com/p/google-guice/wiki/UserGuide Guice User Guide] for an introductory overview of Guice concepts.
+This tutorial will show how a simple GWT widget can be constructed with GIN. You should be already familiar with [http://code.google.com/p/google-guice/ Guice] - if not, then please read the [http://code.google.com/docreader/#p=google-guice&s=google-guice&t=Motivation Guice User Guide] for an introductory overview of Guice concepts.
 
-== Introduction ==
+<wiki:toc max_depth="3" />
+
+= Introduction =
 
 In regular Guice, you would use:
 
@@ -16,7 +18,9 @@ However, as the comment points out that won't work in GWT:
  * There is no actual class available in the resulting !JavaScript.
  * Guice makes heavy use of reflection, most of which GWT does not emulate.
 
-Fortunately in GWT there is a different idiom for which accomplishes the same purpose.
+Fortunately in GWT there is a different idiom which accomplishes the same purpose.
+
+= Using Gin =
 
 == Step 1. Inheriting the GIN module ==
 {{{
@@ -86,8 +90,6 @@ MyWidgetProject/
     server/
 }}}
 
-(TODO: Add build file example)
-
 == Step 5. Creating the Ginjector ==
 
 To create the injector instance, use the standard {{{GWT.create()}}} call. This can be done during static initialization:
@@ -101,5 +103,81 @@ public class MyWidget implements EntryPoint {
     RootPanel.get().add(mainPanel);
   }
 
+}
+}}}
+
+= Compilation =
+
+Your project should now be ready to be compiled. Since Gin uses Guice at compile-time and Guice operates on compiled java classes, you'll have to provide the compiled java classes to the gwt compiler. Example from an ant build file:
+
+{{{
+<target name="javac" description="Compiles Java types needed during GWT compilation">
+  <mkdir dir="war/WEB-INF/classes"/>
+  <javac srcdir="src" destdir="war/WEB-INF/classes">
+    <classpath refid="project.libs"/>
+  </javac>
+</target>
+
+<target name="gwtc" depends="javac" description="GWT Web Compilation">
+  <java classname="com.google.gwt.dev.Compiler">
+    <classpath>
+      <pathelement location="src"/>
+
+       <!-- Note the reference to the compiled java classes -->
+      <pathelement location="war/WEB-INF/classes"/>
+      <path refid="project.libs"/>
+    </classpath>
+     <arg value="com.example.myapp.MyApp"/>
+  </java>
+</target>
+}}}
+
+= Full Example =
+
+You can find an example for Gin project layout and compilation in our [http://code.google.com/p/google-gin/source/browse/trunk/samples/ samples collection]. 
+
+= Gin "Magic" =
+
+Gin tries to make injection painless and remove as much boilerplate from your code as possible. To do that the generated code includes some magic behind the scenes which is explained here.
+
+== Deferred Binding ==
+
+One way Gin optimizes code is by automating GWT [http://code.google.com/webtoolkit/doc/latest/DevGuideCodingBasics.html#DevGuideDeferredBinding deferred binding]. So if you inject an interface or class^1^ bound through deferred binding (but not through a Guice/Gin binding), Gin will internally call `GWT.create` on it and inject the result. One example are GWT [http://google-web-toolkit.googlecode.com/svn/javadoc/2.0/com/google/gwt/i18n/client/Messages.html messages] and [http://google-web-toolkit.googlecode.com/svn/javadoc/2.0/com/google/gwt/i18n/client/Constants.html constants] (used for i18n purposes):
+
+{{{
+public interface MyConstants extends Constants {
+  String myWords();
+}
+
+public class MyWidget {
+
+  @Inject
+  public MyWidget(MyConstants myconstants) {
+    // The injected constants object will be fully initialized - 
+    // GWT.create has been called on it and no further work is necessary.
+  }
+}
+}}}
+
+_Note:_ Gin will not bind the instances created through `GWT.create` in singleton scope. That should not cause unnecessary overhead though, since deferred binding generators usually implement singleton patterns in their generated code.
+
+^1^: Gin creates all instances through `GWT.create` (instead of `new`) for which it is legal: interfaces and classes with default constructors (whether they have an `@Inject` annotation or not).
+
+== Remote Services ==
+
+The `RemoteService` magic Gin performs is an extension of the deferred binding optimization explained above. Every time Gin is asked to inject an [http://code.google.com/webtoolkit/doc/latest/DevGuideServerCommunication.html#DevGuideMakingACall asynchronous remote service], it will inject an instance retrieved through calling `GWT.create` on its regular remote service:
+
+{{{
+public interface MyRemoteService extends RemoteService { ... }
+
+public interface MyRemoteServiceAsync { ... }
+
+public class MyWidget {
+  
+  @Inject
+  public MyWidget(MyRemoteServiceAsync service) {
+    // The 'service' will be created by calling GWT.create(MyRemoteService.class)
+    // prior to injection. 
+  }
 }
 }}}
