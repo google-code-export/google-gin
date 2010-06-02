@@ -24,28 +24,29 @@ Here we compare the current GIN trunk with Guice 1.0 and 2.0. The feature list i
 *P* = Planned (possible)
 
 === Configuration ===
-|| *Feature*                     || *Guice 1.0* || *Guice 2.0* || *GIN*           ||
-|| Modules                       || A           || A           || A (`GinModule`) ||  
-|| Provider bindings             || A           || A           || A               || 
-|| Provider method bindings      || N/A         || A           || A               || 
-|| toInstance bindings           || A           || A           || P (?)           || 
-|| Constant bindings             || A           || A           || A               || 
-|| Binder.install                || A           || A           || A               ||  
-|| Binder.requestInjection       || N/A         || A           || N/A             || 
-|| Binder.requestStaticInjection || A           || A           || A               || 
-|| Binder.getProvider()          || N/A         || A           || P               || 
-|| Binder.requireBinding()       || N/A         || A           || P               || 
-|| (Custom) binding annotations  || A           || A           || A               ||  
-|| `@Named`                      || A           || A           || A               ||  
-|| Scopes                        || A           || A           || A               || 
-|| Custom Scopes                 || A           || A           || P (?)           || 
-|| `@Singleton class Blah{}`     || A           || A           || A               || 
-|| `@ImplementedBy`              || A           || A           || A               || 
-|| `@ProvidedBy`                 || A           || A           || A               || 
-|| `TypeLiteral`                 || A           || A           || A               || 
-|| Circular dependencies         || A           || A           || P               || 
-|| Private modules               || N/A         || A           || P               || 
-|| `@Optional` injection         || N/A         || A           || A               || 
+|| *Feature*                     || *Guice 1.0* || *Guice 2.0* || *GIN 1.0* || *GIN HEAD* ||
+|| Modules                       || A           || A           || A (`GinModule`) || A ||
+|| Provider bindings             || A           || A           || A         || A       ||
+|| Provider method bindings      || N/A         || A           || A         || A       ||
+|| toInstance bindings           || A           || A           || P (?)     || P (?)   ||
+|| Constant bindings             || A           || A           || A         || A       ||
+|| Binder.install                || A           || A           || A         || A       ||
+|| Binder.requestInjection       || N/A         || A           || N         || N/A     ||
+|| Binder.requestStaticInjection || A           || A           || A         || A       ||
+|| Binder.getProvider()          || N/A         || A           || P         || P       ||
+|| Binder.requireBinding()       || N/A         || A           || P         || P       ||
+|| (Custom) binding annotations  || A           || A           || A         || A       ||
+|| `@Named`                      || A           || A           || A         || A       ||
+|| Scopes                        || A           || A           || A         || A       ||
+|| Custom Scopes                 || A           || A           || P (?)     || P (?)   ||
+|| `@Singleton class Blah{}`     || A           || A           || A         || A       ||
+|| `@ImplementedBy`              || A           || A           || A         || A       ||
+|| `@ProvidedBy`                 || A           || A           || A         || A       ||
+|| `TypeLiteral`                 || A           || A           || A         || A       ||
+|| Circular dependencies         || A           || A           || P         || P       ||
+|| Private modules               || N/A         || A           || P         || P       ||
+|| `@Optional` injection         || N/A         || A           || A         || P       ||
+|| Assisted Inject               || A           || A           || P         || A       ||
 
 === Runtime ===
 || *Feature*                     || *Guice 1.0* || *Guice 2.0* || *GIN* ||
