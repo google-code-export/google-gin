@@ -1,7 +1,6 @@
 #summary GIN frequently asked questions
 #labels Featured
 
-
 = GIN frequently asked questions =
 
 == How does GIN work? ==
@@ -57,3 +56,7 @@ The automatic binding works by replacing an injection of `MyRemoteServiceAsync` 
 This can happen when Gin tries to instantiate an interface by calling GWT.create on it - a method Gin uses to allow easy injection of interfaces configured with GWT's deferred binding mechanism. Unfortunately, if no deferred binding or replacement is registered for the interface, you will get the above error. To fix the problem, bind the offending interface to an injectable implementation in your GinModule.
 
 _Note:_ This can also happen when using `@Optional` injection - if the injected parameter is of an interface type and the interface is not bound, Gin will *not* use optional injection but call GWT.create on the interface, potentially causing this error.
+
+----
+
+*Note:* Please don't ask questions in the comments below but join and ask the [http://groups.google.com/group/google-gin GIN discussion group] instead. We won't answer questions in the comments!
