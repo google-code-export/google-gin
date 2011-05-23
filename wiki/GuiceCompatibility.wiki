@@ -11,7 +11,7 @@ For `Module` and `AbtractModule`, use `GinModule` and `AbstractGinModule`. They 
 
 For `Injector`, use the `Ginjector` conbined with the `@GinModules` annotation. See the [GinTutorial] to learn how you can get started and [GinFaq] for more helpful hints.
 
-For everything else, use the Guice types. Note that we don not support everything Guice does (and we never will), so keep in mind when you are developing with GIN. See the feature comparison below for more information.
+For everything else, use the Guice types. Note that we do not support everything Guice does (and we never will), so keep in mind when you are developing with GIN. See the feature comparison below for more information.
 
 
 == Features ==
@@ -24,35 +24,41 @@ Here we compare the current GIN trunk with Guice 1.0 and 2.0. The feature list i
 *P* = Planned (possible)
 
 === Configuration ===
-|| *Feature*                     || *Guice 1.0* || *Guice 2.0* || *GIN 1.0* || *GIN HEAD* ||
-|| Modules                       || A           || A           || A (`GinModule`) || A ||
-|| Provider bindings             || A           || A           || A         || A       ||
-|| Provider method bindings      || N/A         || A           || A         || A       ||
-|| toInstance bindings           || A           || A           || P (?)     || P (?)   ||
-|| Constant bindings             || A           || A           || A         || A       ||
-|| Binder.install                || A           || A           || A         || A       ||
-|| Binder.requestInjection       || N/A         || A           || N         || N/A     ||
-|| Binder.requestStaticInjection || A           || A           || A         || A       ||
-|| Binder.getProvider()          || N/A         || A           || P         || P       ||
-|| Binder.requireBinding()       || N/A         || A           || P         || P       ||
-|| (Custom) binding annotations  || A           || A           || A         || A       ||
-|| `@Named`                      || A           || A           || A         || A       ||
-|| Scopes                        || A           || A           || A         || A       ||
-|| Custom Scopes                 || A           || A           || P (?)     || P (?)   ||
-|| `@Singleton class Blah{}`     || A           || A           || A         || A       ||
-|| `@ImplementedBy`              || A           || A           || A         || A       ||
-|| `@ProvidedBy`                 || A           || A           || A         || A       ||
-|| `TypeLiteral`                 || A           || A           || A         || A       ||
-|| Circular dependencies         || A           || A           || P         || P       ||
-|| Private modules               || N/A         || A           || P         || P       ||
-|| `@Optional` injection         || N/A         || A           || A         || P       ||
-|| Assisted Inject               || A           || A           || P         || A       ||
+|| *Feature*                     || *Guice 1.0* || *Guice 2.0* || *Guice 3.0* || *GIN 1.0* || *GIN 1.5* || *GIN HEAD* ||
+|| Modules                       || A           || A           || A           || A (`GinModule`) || A || A ||
+|| Provider bindings             || A           || A           || A           || A         || A       || A ||
+|| Provider methods      || N/A         || A          || A            || A         || A       || A ||
+|| toInstance bindings           || A           || A           || A           || N/A     || N/A   || P (?) ||
+|| Constant bindings             || A           || A           || A           || A         || A       || A ||
+|| Binder.install                || A           || A           || A           || A         || A       || A ||
+|| Binder.requestInjection       || N/A         || A           || A           || N/A         || N/A      || N/A || 
+|| Binder.requestStaticInjection || A           || A           || A           || A         || A       || A ||
+|| Binder.getProvider         || N/A         || A           || A           || P         || P       || P ||
+|| Binder.requireBinding       || N/A         || A           || A           || P         || P       || P ||
+|| (Custom) binding annotations  || A           || A           || A           || A         || A       || A ||
+|| `@Named`                      || A           || A           || A           || A         || A       || A ||
+|| Scopes                        || A           || A           || A           || A         || A       || A ||
+|| Custom Scopes                 || A           || A           || A           || N/A     || N/A   || P (?) ||
+|| `@Singleton class Blah{}`     || A           || A           || A           || A         || A       || A ||
+|| `@ImplementedBy`              || A           || A           || A           || A         || A       || A ||
+|| `@ProvidedBy`                 || A           || A           || A           || A         || A       || A ||
+|| `TypeLiteral`                 || A           || A           || A           || A         || A       || A ||
+|| Circular dependencies         || A           || A           || A           || N/A         || N/A       || A ||
+|| Private modules               || N/A         || A           || A           || N/A         || N/A       || A ||
+|| `@Optional` injection         || N/A         || A           || A           || A         || A       || A ||
+|| Assisted Inject               || A           || A           || A           || N/A         || A (`GinFactoryModuleBuilder`)      || A ||
+|| JSR330 Support              || N/A    || N/A       || A  || N/A || A || A ||
+|| Binder.requireExplicitBindings   || N/A    || N/A       || A  || N/A || N/A || P ||
+|| toConstructor bindings   || N/A    || N/A       || A  || N/A || N/A || P ||
+|| Multi/Mapbinder || N/A || A || A || N/A || N/A || P ||
+|| Custom injections || N/A || A || A || N/A || N/A || N/A ||
+|| Throwing/checked provider || N/A || N/A || A || N/A || N/A || P (?) ||
 
 === Runtime ===
-|| *Feature*                     || *Guice 1.0* || *Guice 2.0* || *GIN* ||
-|| Constructor injection         || A           || A           || A     || 
-|| Field injection               || A           || A           || A     || 
-|| Method injection              || A           || A           || A     ||
-|| Method interception (AOP)     || A           || A           || P (?) || 
-|| Injector.injectMembers        || A           || A           || A     || 
-|| Injection of private members  || A           || A           || A     ||
+|| *Feature*                     || *Guice 1.0* || *Guice 2.0* || *Guice 3.0* || *GIN 1.0* || *GIN 1.5* || *GIN HEAD* ||
+|| Constructor injection         || A           || A           || A           || A     || A || A ||
+|| Field injection               || A           || A           || A           || A     || A || A ||
+|| Method injection              || A           || A           || A           || A     || A || A ||
+|| Method interception (AOP)     || A           || A           || A           || N/A || N/A || P(?) ||
+|| Injector.injectMembers        || A           || A           || A           || A     || A || A ||
+|| Injection of private members  || A           || A           || A           || A     || A || A ||
