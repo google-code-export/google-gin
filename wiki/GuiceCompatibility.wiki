@@ -24,11 +24,11 @@ Here we compare the current GIN trunk with Guice 1.0 and 2.0. The feature list i
 *P* = Planned (possible)
 
 === Configuration ===
-|| *Feature*                     || *Guice 1.0* || *Guice 2.0* || *Guice 3.0* || *GIN 1.0* || *GIN 1.5* || *GIN HEAD* ||
+|| *Feature*                     || *Guice 1.0* || *Guice 2.0* || *Guice 3.0* || *GIN 1.0* || *GIN 1.5* || *GIN 2.0* ||
 || Modules                       || A           || A           || A           || A (`GinModule`) || A || A ||
 || Provider bindings             || A           || A           || A           || A         || A       || A ||
 || Provider methods      || N/A         || A          || A            || A         || A       || A ||
-|| toInstance bindings           || A           || A           || A           || N/A     || N/A   || P (?) ||
+|| toInstance bindings           || A           || A           || A           || N/A     || N/A   || N/A ||
 || Constant bindings             || A           || A           || A           || A         || A       || A ||
 || Binder.install                || A           || A           || A           || A         || A       || A ||
 || Binder.requestInjection       || N/A         || A           || A           || N/A         || N/A      || N/A || 
@@ -38,7 +38,7 @@ Here we compare the current GIN trunk with Guice 1.0 and 2.0. The feature list i
 || (Custom) binding annotations  || A           || A           || A           || A         || A       || A ||
 || `@Named`                      || A           || A           || A           || A         || A       || A ||
 || Scopes                        || A           || A           || A           || A         || A       || A ||
-|| Custom Scopes                 || A           || A           || A           || N/A     || N/A   || P (?) ||
+|| Custom Scopes                 || A           || A           || A           || N/A     || N/A   || N/A ||
 || `@Singleton class Blah{}`     || A           || A           || A           || A         || A       || A ||
 || `@ImplementedBy`              || A           || A           || A           || A         || A       || A ||
 || `@ProvidedBy`                 || A           || A           || A           || A         || A       || A ||
@@ -46,19 +46,20 @@ Here we compare the current GIN trunk with Guice 1.0 and 2.0. The feature list i
 || Circular dependencies         || A           || A           || A           || N/A         || N/A       || A ||
 || Private modules               || N/A         || A           || A           || N/A         || N/A       || A ||
 || `@Optional` injection         || N/A         || A           || A           || A         || A       || A ||
-|| Assisted Inject               || A           || A           || A           || N/A         || A (`GinFactoryModuleBuilder`)      || A ||
+|| Assisted Inject               || A           || A           || A           || N/A         || A      || A ||
 || JSR330 Support              || N/A    || N/A       || A  || N/A || A || A ||
-|| Binder.requireExplicitBindings   || N/A    || N/A       || A  || N/A || N/A || P ||
-|| toConstructor bindings   || N/A    || N/A       || A  || N/A || N/A || P ||
-|| Multi/Mapbinder || N/A || A || A || N/A || N/A || P ||
+|| Binder.requireExplicitBindings   || N/A    || N/A       || A  || N/A || N/A || N/A ||
+|| toConstructor bindings   || N/A    || N/A       || A  || N/A || N/A || N/A ||
+|| Multi/Mapbinder || N/A || A || A || N/A || N/A || N/A ||
 || Custom injections || N/A || A || A || N/A || N/A || N/A ||
-|| Throwing/checked provider || N/A || N/A || A || N/A || N/A || P (?) ||
+|| Throwing/checked provider || N/A || N/A || A || N/A || N/A || N/A ||
+|| Inject Package Private Types || A || A || A || N/A || N/A || A ||
 
 === Runtime ===
-|| *Feature*                     || *Guice 1.0* || *Guice 2.0* || *Guice 3.0* || *GIN 1.0* || *GIN 1.5* || *GIN HEAD* ||
+|| *Feature*                     || *Guice 1.0* || *Guice 2.0* || *Guice 3.0* || *GIN 1.0* || *GIN 1.5* || *GIN 2.0* ||
 || Constructor injection         || A           || A           || A           || A     || A || A ||
 || Field injection               || A           || A           || A           || A     || A || A ||
 || Method injection              || A           || A           || A           || A     || A || A ||
-|| Method interception (AOP)     || A           || A           || A           || N/A || N/A || P(?) ||
+|| Method interception (AOP)     || A           || A           || A           || N/A || N/A || N/A ||
 || Injector.injectMembers        || A           || A           || A           || A     || A || A ||
 || Injection of private members  || A           || A           || A           || A     || A || A ||
